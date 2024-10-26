@@ -11,4 +11,7 @@ ADMStaff originated as a group that provides services from students to students.
 ### [RaspiBO](https://www.raspibo.org/wiki/index.php/Pagina_principale)
 RaspiBO is an informal group of electronics and free computer enthusiasts in the Bologna area (but not only). Our skills are diverse; computer science, electronics, mechanics, various arts and crafts: some are experts in their field, some are beginners, but everyone is eager to share their experience.
 
+### [UniBo Motorsport](https://motorsport.unibo.it/)
+Official racing team of the university, composed of more than 250 students from different faculties. Founded in 2009, the team has since taken part in many international competitions. Among the others, the organization has an IT department and a Driverless division.
+
 #
