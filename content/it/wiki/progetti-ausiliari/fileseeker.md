@@ -6,8 +6,8 @@ date: 2025-06-10T16:11:38+02:00
 - [Repository GitHub](https://github.com/cartabinaria/fileseeker)
 
 ## Descrizione
-`fileseeker` è un adattore WebDAV per le risorse presenti su CartaBinaria.
-Espone quindi tutti i contenuti di CartBinaria attraverso un sevrer WebDAV.
+`fileseeker` è un adattore WebDAV per le risorse presenti su [Risorse](https://risorse.vercel.app/).
+Espone quindi tutti i contenuti di Risorse attraverso un sevrer WebDAV.
 Per informazioni maggiori sul protocollo WebDAV, consultare [webdav.org](http://www.webdav.org/).
 
 Il programma è essenzialmente strutturato in due componenti principali:
@@ -26,3 +26,7 @@ per l'esame scritto di logica per l'informatica del 2024-02-16.
 ```bash
 curl -O https://dav.students.cs.unibo.it/logica-per-informatica/prove/scritto-2024-02-16-1-soluzione.pdf
 ```
+
+Il motivo per cui fileseeker è stato scritto (e la scelta del protocollo WebDAV), risiede nella possibilità
+di accedere al filesystem remoto direttamente dal proprio dispositivo, senza dover accedere a siti
+esterni. Questo è fattibile tramite file manager o `rclone`.
