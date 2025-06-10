@@ -30,3 +30,6 @@ curl -O https://dav.students.cs.unibo.it/logica-per-informatica/prove/scritto-20
 The reason `fileseeker` was written (and the choice of WebDAV protocol) consists in the possibility
 of accessing the remote filesystem directly from your own device, without having to access external websites.
 This can be done via file manager or `rclone`.
+
+Below is a Nextcloud guide for accessing remote file systems that make
+use of the WebDAV protocol: [Guide](https://docs.nextcloud.com/server/latest/user_manual/it/files/access_webdav.html)
