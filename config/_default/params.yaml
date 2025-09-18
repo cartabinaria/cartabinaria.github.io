@@ -8,7 +8,7 @@
 appearance:
   theme_day: custom
   theme_night: custom
-  font: minimal
+  font: native
   font_size: L
 
 # SEO
