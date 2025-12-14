@@ -1,7 +1,7 @@
 ---
 title: 'Theoretical Computer Science and Formal Methods'
 summary: 'Summer and winter schools about theoretical computer science and formal methods'
-date: '2025-12-14T13:00:00+01:00'
+date: '2025-12-14T10:00:00+01:00'
 weight: 30
 ---
 

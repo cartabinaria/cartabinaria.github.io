@@ -1,7 +1,7 @@
 ---
 title: 'Informatica teorica e metodi formali'
 summary: 'Raccolta di scuole estive e invernali su informatica teorica e metodi formali'
-date: '2025-12-14T13:00:00+01:00'
+date: '2025-12-14T10:00:00+01:00'
 weight: 30
 ---
 
