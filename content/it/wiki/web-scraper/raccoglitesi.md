@@ -42,3 +42,4 @@ ancora. Per questo motivo il programma è eseguito ogni giorno, a mezzanotte.
   Ingegneria](https://cartabinaria.github.io/raccoglitesi/disi)
 - [DEI: Ingegneria dell’Energia elettrica e dell’Informazione "Guglielmo
   Marconi"](https://cartabinaria.github.io/raccoglitesi/dei)
+- [DIFA: Fisica e Astronomia "Augusto Righi"](https://cartabinaria.github.io/raccoglitesi/fisica-astronomia)
