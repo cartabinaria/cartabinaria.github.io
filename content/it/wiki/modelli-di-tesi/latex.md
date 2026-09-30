@@ -23,6 +23,6 @@ viene aggiornata, sotto "Settings"/"Pages"/"Build and deployment" imposta
 ## CI/CD
 
 Ogni volta che aggiungi un _commit_ su una PR aperta verso `main`, viene
-controllata la correta compilazione di `tesi/tesi.tex`. Ogni volta che `main`
+controllata la corretta compilazione di `tesi/tesi.tex`. Ogni volta che `main`
 subisce modifiche, il risultato della compilazione viene pubblicato su
 `https://<nome-utente>.github.io/<nome-repository>/tesi.pdf`.
