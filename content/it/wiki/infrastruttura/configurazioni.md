@@ -41,6 +41,73 @@ I vari corsi di laurea del DISI sono elencati e internamente suddivisi in anni.
 Ciascuno contiene anche gli identificativi dei rispettivi insegnamenti in
 `teachings.json`.
 
+## Uso da Go con `config-parser-go`
+
+La libreria [config-parser-go](https://github.com/cartabinaria/config-parser-go)
+espone il package `cparser`. Da un modulo Go, con Go 1.22.4 o successivo:
+
+```sh
+go get github.com/cartabinaria/config-parser-go@v0.3.4
+```
+
+Questa versione richiede `cartabinaria/config` v1.1.4. I JSON sono incorporati
+in quel modulo con `embed.FS`: i parser non leggono una directory locale e non
+scaricano configurazioni a runtime. I dati dipendono dalla versione di `config`
+selezionata dal modulo del programma; per aggiornarli occorre aggiornare la
+dipendenza e ricompilare.
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	cparser "github.com/cartabinaria/config-parser-go"
+)
+
+func main() {
+	degrees, err := cparser.ParseDegrees()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, degree := range degrees {
+		fmt.Println(degree.Id, degree.Name)
+	}
+}
+```
+
+Tutti i parser restituiscono anche un `error` per gli errori di lettura o
+decodifica JSON: controllalo prima di usare i dati.
+
+| Funzione | Risultati |
+| --- | --- |
+| `ParseTeachings()` | `[]cparser.Teaching, error` |
+| `ParseDegrees()` | `[]cparser.Degree, error` |
+| `ParseTimetables()` | `map[string]cparser.Timetable, error` |
+| `ParseMaintainers()` | `[]cparser.Maintainer, error` |
+| `ParseRepresentatives()` | `map[string]cparser.Representative, error` |
+
+`ParseMaintainers()` seleziona **solo il progetto `informabot`**, non tutti i
+mantenitori di `maintainers.json`; restituisce un errore se il progetto manca.
+
+Per filtrare `d.Teachings` di un `cparser.Degree`:
+
+- `GetAllMandatoryTeachingsFromDegree(d)` e
+  `GetAllElectivesTeachingsFromDegree(d)` selezionano obbligatori e opzionali;
+- `GetYearMandatoryTeachingsFromDegree(d, year)` e
+  `GetYearElectivesTeachingsFromDegree(d, year)` filtrano anche per anno
+  (`year` è un `int64`).
+
+Questi filtri restituiscono `[]cparser.DegreeTeaching`, senza `error`.
+`GetYear(d, year)` cerca invece in `d.Years` e restituisce `(cparser.Year, error)`:
+se l'anno manca, restituisce `cparser.Year{}` e un errore.
+`MustGetYear(d, year)` restituisce `cparser.Year`, ma genera un **panic** se
+l'anno manca; usalo solo quando la presenza dell'anno è garantita.
+
+Riferimenti: [pkg.go.dev](https://pkg.go.dev/github.com/cartabinaria/config-parser-go)
+e [sorgente con tipi e firme complete](https://github.com/cartabinaria/config-parser-go/blob/v0.3.4/main.go).
+
 ## Mantenitori (`maintainers.json`)
 
 In `maintainers.json`, sono elencati i contatti Telegram di alcuni dei maintainers 
