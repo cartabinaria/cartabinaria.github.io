@@ -45,6 +45,10 @@ body {
   box-shadow: none !important; // 'important' to override dark mode box-shadow too.
 }
 
+.navbar .dropdown-menu {
+  border-color: currentColor;
+}
+
 // custom section padding
 .home-section {
   padding: 1rem 0;
