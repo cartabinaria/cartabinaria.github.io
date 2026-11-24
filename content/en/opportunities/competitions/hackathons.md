@@ -12,6 +12,7 @@ Hackathons are collaborative short-term events where programmers, developers, an
 - [Codemotion Hackathon](https://events.codemotion.com/?type=online_hackathon)
 - [Open Data Playground](https://journal.opendataplayground.com/)
 - [CTE COBO](https://www.ctecobo.it/tutti-gli-hackathon/)
+- For a list of in-person hackathons in Italy still open for registration: [Prossimo Hackathon](https://prossimohackathon.it/)
 - For a list of past hackathons to look for new editions: [Hackathon-Italia](https://hackathon-italia.github.io/Hackathon-Italia/)
 
 ## In Europe
