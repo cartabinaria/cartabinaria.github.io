@@ -44,10 +44,9 @@
 [[buttons]]
   id = "bluesky"
   url = "https://bsky.link/?text={title}&url={url}"
-  title = "bluesky"
+  title = "Bluesky"
   icon_pack = "fas"
-# icon = "cloud"  
-  icon = "square"
+  icon = "bluesky"
   enable = true
 
 [[buttons]]

@@ -5,12 +5,15 @@ name = "Starter Blog"
 [light]
   # Primary
   primary = "#EA8C55"
+  link = "#AE4C17"
+  link_hover = "#8F3C10"
+  background = "#F7FAFC"
 
   # Menu
   menu_primary = "rgb(247, 250, 252)"
-  menu_text = "#4281A4"
-  menu_text_active = "#EA8C55"
-  menu_title = "#F1FAEE"
+  menu_text = "#2E6A8C"
+  menu_text_active = "#AE4C17"
+  menu_title = "#14212B"
 
   # Home sections
   home_section_odd = "rgb(247, 250, 252)"
@@ -18,12 +21,12 @@ name = "Starter Blog"
 
 [dark]
   primary = "#EA8C55"
-  link = "#EA8C55"
-  link_hover = "#EA8C55"
+  link = "#F0A374"
+  link_hover = "#F5BC97"
   background = "#02111B"
   home_section_odd = "#02111B"
   home_section_even = "#02111B"
   menu_primary = "#02111B"
-  menu_text = "#4281A4"
-  menu_text_active = "#EA8C55"
+  menu_text = "#93C0DA"
+  menu_text_active = "#F0A374"
   menu_title = "#F1FAEE"

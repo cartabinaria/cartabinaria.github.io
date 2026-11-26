@@ -1,78 +1,201 @@
 // Starter Blog Template
 // https://wowchemy.com/hugo-themes/
+
+// CartaBinaria palette. `-ink` variants keep text links at WCAG AA contrast.
 :root {
-  $primary: #971327;
-  $secondary: #EA8C55;
-  $accent: #4281A4;
-  $content: #02111B;
-  $base: #F1FAEE;
+  --cb-orange: #EA8C55;
+  --cb-orange-ink: #AE4C17;
+  --cb-blue: #4281A4;
+  --cb-blue-ink: #2E6A8C;
+  --cb-navy: #02111B;
+  --cb-bg: #F7FAFC;
+  --cb-surface: #FFFFFF;
+  --cb-footer: #EEF3F7;
+  --cb-border: rgba(2, 17, 27, 0.09);
+  --cb-text: #14212B;
+  --cb-muted: #4A5A65;
+  --cb-shadow: 0 1px 2px rgba(2, 17, 27, 0.04), 0 8px 24px rgba(2, 17, 27, 0.06);
+  --cb-shadow-hover: 0 2px 4px rgba(2, 17, 27, 0.05), 0 16px 36px rgba(2, 17, 27, 0.1);
+  --cb-radius: 16px;
+}
+
+.dark {
+  --cb-orange-ink: #F0A374;
+  --cb-blue-ink: #93C0DA;
+  --cb-bg: #02111B;
+  --cb-surface: #0B1C29;
+  --cb-footer: #010B12;
+  --cb-border: rgba(241, 250, 238, 0.1);
+  --cb-text: #E6EDF1;
+  --cb-muted: #A3B5C1;
+  --cb-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+  --cb-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 
 body {
-  background-color: var(--base);
+  background-color: var(--cb-bg);
+  color: var(--cb-text);
 }
 
-.article-container {
-  background-color: var(--base);
-  border-radius: 15px;
+// The theme subtracts the navbar height, leaving a blank band under the footer on short pages.
+.page-wrapper {
+  min-height: 100vh;
 }
 
-.dark .article-container {
-  background-color: var(--base);
-}
-
-// custom footer color
 .page-footer {
-  background-color: rgb(247, 250, 252);
+  margin-top: auto;
 }
 
-.dark .page-footer {
-  background-color: rgb(26, 32, 44);
+::selection {
+  background: rgba(234, 140, 85, 0.3);
 }
 
-// more rounded cards and larger gap between cards
-.card-simple {
-  margin-top: 1.8rem;
-  border-radius: 15px;
+:focus-visible {
+  outline: 3px solid var(--cb-blue);
+  outline-offset: 2px;
 }
 
-.dark .card-simple {
-  background: rgb(31, 39, 51);
-}
+// Navbar
 
-// no navbar shadow
-.navbar {
+.page-header #navbar-main {
+  background-color: rgba(247, 250, 252, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--cb-border);
   box-shadow: none !important; // 'important' to override dark mode box-shadow too.
+}
+
+.dark .page-header #navbar-main {
+  background-color: rgba(2, 17, 27, 0.82);
+}
+
+#navbar-main .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cb-text);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+// Two overlapping sheets, after the CartaBinaria logo.
+#navbar-main .navbar-brand::before {
+  content: "";
+  width: 0.7rem;
+  height: 0.9rem;
+  margin: 0.25rem 0.85rem 0 0;
+  border-radius: 3px;
+  background: var(--cb-blue);
+  box-shadow: 0.3rem -0.25rem 0 var(--cb-orange);
+}
+
+#navbar-main .navbar-nav .nav-link {
+  color: var(--cb-blue-ink);
+  font-weight: 600;
+  border-radius: 999px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+#navbar-main .navbar-nav .nav-link:hover,
+#navbar-main .navbar-nav .nav-link:focus-visible {
+  color: var(--cb-text);
+  background-color: rgba(66, 129, 164, 0.1);
+}
+
+#navbar-main .navbar-nav .nav-link.active {
+  color: var(--cb-orange-ink);
+  background-color: rgba(234, 140, 85, 0.14);
+}
+
+@media (min-width: 992px) {
+  #navbar-main .main-menu-item .nav-link {
+    padding: 0.35rem 0.9rem;
+    margin: 0 0.1rem;
+  }
 }
 
 .navbar .dropdown-menu {
   border-color: currentColor;
+  border-radius: 12px;
+  box-shadow: var(--cb-shadow);
 }
 
-// custom section padding
+// Home sections
+
 .home-section {
   padding: 1rem 0;
 }
 
 .home-section.wg-about-avatar {
-  padding: 0;
+  padding: 3.5rem 0 2rem;
+}
+
+.home-section .home-section-bg {
+  background-color: var(--cb-bg);
+}
+
+// Soft brand glow; both ellipses fade out before the section edges to avoid color seams.
+.wg-about-avatar .home-section-bg {
+  background:
+    radial-gradient(ellipse 34% 48% at 30% 42%, rgba(234, 140, 85, 0.18), transparent 70%),
+    radial-gradient(ellipse 34% 48% at 70% 48%, rgba(66, 129, 164, 0.14), transparent 70%),
+    var(--cb-bg);
+}
+
+#profile .avatar {
+  box-shadow: 0 0 0 6px var(--cb-surface), 0 0 0 7px var(--cb-border), 0 18px 40px rgba(2, 17, 27, 0.18);
+}
+
+.wg-about-avatar #profile .portrait-title h2 {
+  margin-top: 1.4rem;
+  font-size: #{"clamp(1.9rem, 1.2rem + 2vw, 2.6rem)"};
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cb-text);
 }
 
 #profile .network-icon {
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+#profile .network-icon li {
+  margin: 0 0.25rem;
+}
+
+#profile .network-icon a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: var(--cb-orange-ink);
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  box-shadow: var(--cb-shadow);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+#profile .network-icon a:hover {
+  transform: translateY(-2px);
+  color: var(--cb-text);
 }
 
 ul.network-icon .big-icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.wg-about-avatar #profile .article-style {
+  max-width: 38rem;
+  margin: 1.25rem auto 0;
+  color: var(--cb-muted);
+  line-height: 1.6;
+}
+
+.wg-about-avatar #profile .article-style p:first-child {
+  color: var(--cb-text);
 }
 
 .dark .portrait-title h3 {
   color: rgba(255, 255, 255, 0.9);
-  font-weight: bold;
-}
-
-.dark .portrait-title h2 {
-  color: var(--content);
   font-weight: bold;
 }
 
@@ -91,11 +214,6 @@ ul.network-icon .big-icon {
 }
 
 // Narrower container for Hello World sections (primarily Blank widget content).
-@media (min-width: 1200px) {
-  .home-section .container {
-    max-width: 880px;
-  }
-}
 @media (min-width: 992px) {
   .home-section .container {
     max-width: 880px;
@@ -125,4 +243,355 @@ ul.network-icon .big-icon {
 
 .wg-about .portrait-title h3 {
   font-size: 0.8rem;
+}
+
+// Project filters: separate chips that wrap cleanly on small screens.
+
+.project-filters {
+  margin-bottom: 2rem;
+}
+
+.project-filters .btn-group {
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.project-filters .btn-group > .btn {
+  flex: 0 0 auto;
+  margin: 0 !important;
+  padding: 0.45rem 1.05rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cb-muted);
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: 999px !important;
+  box-shadow: var(--cb-shadow);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.project-filters .btn-group > .btn:hover {
+  color: var(--cb-text);
+  border-color: rgba(234, 140, 85, 0.6);
+  background: var(--cb-surface);
+}
+
+.project-filters .btn-group > .btn.active,
+.project-filters .btn-group > .btn.active:hover {
+  color: var(--cb-navy);
+  background: var(--cb-orange);
+  border-color: var(--cb-orange);
+}
+
+// Project cards: two even columns and a whole-card link.
+
+.project-card {
+  width: calc(50% - 10px);
+}
+
+@media (max-width: 767.98px) {
+  .project-card {
+    width: 100%;
+  }
+}
+
+.project-card .card {
+  position: relative;
+  overflow: hidden;
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  box-shadow: var(--cb-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .project-card .card {
+    min-height: 8.5rem;
+  }
+}
+
+.project-card .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cb-orange), var(--cb-blue));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.project-card .card:hover,
+.project-card .card:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(234, 140, 85, 0.45);
+  box-shadow: var(--cb-shadow-hover);
+}
+
+.project-card .card:hover::before,
+.project-card .card:focus-within::before {
+  opacity: 1;
+}
+
+.project-card .card-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: 50% 15%;
+}
+
+.project-card .card-text {
+  padding: 1.25rem 1.4rem;
+}
+
+.project-card .card-text h4 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.project-card .card-text h4 a {
+  color: var(--cb-text);
+  text-decoration: none;
+}
+
+.project-card .card-text h4 a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.project-card .card-text h4 a::after {
+  content: "\f35d";
+  margin-left: 0.45rem;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 0.65em;
+  vertical-align: 0.15em;
+  color: var(--cb-orange-ink);
+}
+
+.project-card .card-text .article-style {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--cb-muted);
+}
+
+.project-card .card-text .article-style a {
+  position: relative;
+  z-index: 2;
+  color: var(--cb-orange-ink);
+}
+
+// Listing pages (wiki, opportunities): title first, metadata as a footer, two columns on wide screens.
+
+.universal-wrapper:has(> .view-card) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(#{"min(100%, 19rem)"}, 1fr));
+  gap: 1.25rem;
+}
+
+.universal-wrapper:has(> .view-card) > :not(.view-card) {
+  grid-column: 1 / -1;
+}
+
+.card-simple {
+  margin-top: 1.25rem;
+  padding: 1.35rem 1.5rem;
+  background: var(--cb-surface);
+  border: 1px solid var(--cb-border);
+  border-radius: var(--cb-radius);
+  box-shadow: var(--cb-shadow);
+}
+
+.dark .card-simple {
+  background: var(--cb-surface);
+  border-color: var(--cb-border);
+}
+
+.universal-wrapper:has(> .view-card) > .card-simple {
+  margin-top: 0;
+}
+
+.view-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.view-card:hover,
+.view-card:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(234, 140, 85, 0.45);
+  box-shadow: var(--cb-shadow-hover);
+}
+
+.view-card .article-title {
+  order: -1;
+  margin: 0 0 0.35rem !important;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.view-card .article-title a {
+  color: var(--cb-text);
+  text-decoration: none;
+}
+
+.view-card .article-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.view-card .summary-link {
+  margin-bottom: 1rem;
+}
+
+.view-card .summary-link .article-style {
+  color: var(--cb-muted);
+  line-height: 1.55;
+}
+
+.view-card .article-metadata {
+  order: 1;
+  margin: auto 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--cb-border);
+  color: var(--cb-muted);
+}
+
+.view-card .article-metadata a {
+  position: relative;
+  z-index: 2;
+}
+
+// Article pages
+
+.page-body h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.breadcrumb {
+  font-size: 0.75rem;
+}
+
+.article-style h2,
+.article-style h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.article-style h2 {
+  margin-top: 2.25rem;
+}
+
+// `.page-body` matches the theme's `.dark .article-style a` specificity.
+.page-body .article-style a {
+  color: var(--cb-orange-ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(234, 140, 85, 0.45);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.page-body .article-style a:hover {
+  text-decoration-color: currentColor;
+}
+
+.article-style blockquote {
+  padding: 0.5rem 1.25rem;
+  border-left: 4px solid var(--cb-orange);
+  border-radius: 0 12px 12px 0;
+  background: var(--cb-surface);
+}
+
+.article-style :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  color: var(--cb-text);
+  background: rgba(66, 129, 164, 0.1);
+}
+
+.article-container {
+  border-radius: var(--cb-radius);
+}
+
+.btn-primary {
+  color: var(--cb-navy);
+}
+
+.btn-outline-primary {
+  color: var(--cb-orange-ink);
+  border-color: var(--cb-orange);
+  border-radius: 999px;
+}
+
+.btn-outline-primary:hover {
+  color: var(--cb-navy);
+  background-color: var(--cb-orange);
+  border-color: var(--cb-orange);
+}
+
+// Font Awesome 5 has no Bluesky icon: draw the Simple Icons mark (CC0-1.0) instead.
+.share-btn-bluesky i {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+// Footer
+
+.page-footer {
+  background-color: var(--cb-footer);
+  border-top: 1px solid var(--cb-border);
+}
+
+.dark .page-footer {
+  background-color: var(--cb-footer);
+}
+
+.site-footer {
+  margin-top: 0;
+  padding: 2.25rem 0 1.75rem;
+}
+
+.site-footer .powered-by {
+  color: var(--cb-muted);
+}
+
+.site-footer a {
+  color: var(--cb-orange-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.site-footer .footer-license-icons a {
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card .card,
+  .view-card,
+  #profile .network-icon a {
+    transition: none;
+  }
+
+  .project-card .card:hover,
+  .project-card .card:focus-within,
+  .view-card:hover,
+  .view-card:focus-within,
+  #profile .network-icon a:hover {
+    transform: none;
+  }
 }
